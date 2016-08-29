@@ -8,6 +8,8 @@ var cache = require('express-redis-cache')({
    expire: 2
  });
 
+ app.use(require('express-status-monitor')());
+
  app.get('/', (req, res) => {
      res.json({
        "title": "Cam tam Cali",
