@@ -8,22 +8,78 @@ var cache = require('express-redis-cache')({
    expire: 2
  });
 
-app.get('/', cache.route(), (req, res) => {
+ app.get('/', (req, res) => {
+     res.json({
+       "title": "Cam tam Cali",
+       "text": "uploads/1467643336375.jpg Re etcig jisiboj sijgeziz ben li ci rihiskav mud ilkop jeavaja ve cuobsa zog nadla ecranrig.",
+       "restaurant": {
+         "location": {
+           "address": "Khang Kentucky",
+           "city": "Panwnee",
+           "country": "US",
+           "state": "CA",
+           "zip": "21030",
+           "latitude": "36.482036",
+           "longitude": "-84.726563"
+         },
+         "name": "Khal Restaurant"
+       },
+       "photo": "{{s3file}}",
+       "rating": 3,
+       "pricing": 1,
+       "categories": [1, 2, 5],
+       "collections": ["bce4b769-224a-4dc0-9abb-37f8ecb4be26"]
+     })
+ })
+
+ app.get('/returnWithCache', cache.route(), (req, res) => {
+     res.json({
+       "title": "Cam tam Cali",
+       "text": "uploads/1467643336375.jpg Re etcig jisiboj sijgeziz ben li ci rihiskav mud ilkop jeavaja ve cuobsa zog nadla ecranrig.",
+       "restaurant": {
+         "location": {
+           "address": "Khang Kentucky",
+           "city": "Panwnee",
+           "country": "US",
+           "state": "CA",
+           "zip": "21030",
+           "latitude": "36.482036",
+           "longitude": "-84.726563"
+         },
+         "name": "Khal Restaurant"
+       },
+       "photo": "{{s3file}}",
+       "rating": 3,
+       "pricing": 1,
+       "categories": [1, 2, 5],
+       "collections": ["bce4b769-224a-4dc0-9abb-37f8ecb4be26"]
+     })
+ })
+
+app.get('/longReturnWithCache', cache.route(), (req, res) => {
   setTimeout(function(){
     res.json({
-      "data": "nothing"
+      "title": "Cam tam Cali",
+      "text": "uploads/1467643336375.jpg Re etcig jisiboj sijgeziz ben li ci rihiskav mud ilkop jeavaja ve cuobsa zog nadla ecranrig.",
+      "restaurant": {
+        "location": {
+          "address": "Khang Kentucky",
+          "city": "Panwnee",
+          "country": "US",
+          "state": "CA",
+          "zip": "21030",
+          "latitude": "36.482036",
+          "longitude": "-84.726563"
+        },
+        "name": "Khal Restaurant"
+      },
+      "photo": "{{s3file}}",
+      "rating": 3,
+      "pricing": 1,
+      "categories": [1, 2, 5],
+      "collections": ["bce4b769-224a-4dc0-9abb-37f8ecb4be26"]
     })
-  }, 3000)
-})
-
-app.get('/user/:id', cache.route(), (req, res) => {
-    if (req.params.id == 1) {
-      res.json({ id: 1, name: "John"})
-    } else if (req.params.id == 2) {
-      res.json({ id: 2, name: "Bob"})
-    } else if (req.params.id == 3) {
-      res.json({ id: 3, name: "Stuart"})
-    }
+  }, 5000)
 })
 
 app.use((req, res) => {
