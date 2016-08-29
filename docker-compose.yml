@@ -6,5 +6,24 @@ services:
     ports:
       - 6379:6379
     volumes:
-      - ./db:/data
+      - ./db/redis:/data
     command: redis-server --appendonly yes
+  mysql:
+      image: mysql
+      container_name: mysql
+      environment:
+        - MYSQL_ROOT_PASSWORD=gu123451
+      ports:
+        - 3306:3306
+      volumes:
+        - ./db/mysql:/var/lib/mysql
+      command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+  dev-tools:
+    image: rualatngua/devtools:2.0
+    container_name: devtools
+    links:
+      - mysql:mysql
+    ports:
+      - 7271:80
+    depends_on:
+      - mysql
