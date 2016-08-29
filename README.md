@@ -65,7 +65,7 @@ Transfer/sec:      1.70MB
 
 
 
-##### return simple json after 5s but has cache
+##### return simple json after 500ms but has cache
 --- Single Node ----
 ▶ wrk -t12 -c400 -d30s http://localhost:3000/longReturnWithCache
 Running 30s test @ http://localhost:3000/longReturnWithCache
