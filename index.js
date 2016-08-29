@@ -8,6 +8,16 @@ var cache = require('express-redis-cache')({
    expire: 2
  });
 
+ var knex = require('knex')({
+  client: 'mysql',
+  connection: {
+    host     : 'localhost',
+    user     : 'root',
+    password : 'gu123451',
+    database : 'express_performance'
+  }
+});
+
  app.use(require('express-status-monitor')());
 
  app.get('/', (req, res) => {
