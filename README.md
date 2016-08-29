@@ -2,6 +2,11 @@
 expressjs-performance-test
 Test expressjs with mysql
 
+# installation
+```
+brew install wrk
+```
+
 # wrk tool
 script run Test
 ```
