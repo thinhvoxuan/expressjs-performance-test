@@ -1,0 +1,19 @@
+config:
+  target: "http://localhost:3000"
+  phases:
+    - duration: 60
+      arrivalRate: 20
+  payload:
+    - path: "./payload/characters.csv"
+      fields: ["name","max_strength"]
+  variables:
+    - species: ["Saiyan", "Human", "Nemek"]
+
+scenarios:
+  - flow:
+    - post:
+        - url: "/api/add"
+          json:
+            name: "{{name}}"
+            max_strength: "{{max_strength}}"
+            species: "{{species}}"
