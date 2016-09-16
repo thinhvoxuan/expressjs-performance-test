@@ -2,9 +2,14 @@
 expressjs-performance-test
 Test expressjs with mysql
 
+# Tools:
+1. artillery https://artillery.io/docs/gettingstarted.html
+
+
 # installation
 ```
 brew install wrk
+npm install -g artillery
 ```
 
 # wrk tool
